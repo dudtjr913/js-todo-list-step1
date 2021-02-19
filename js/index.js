@@ -40,8 +40,10 @@ const todosApp = () => {
     if (e.target.classList.contains('destroy')) {
       $todoList.removeChild($todoLi);
       todoList.splice(
-        todoList.findIndex((todo) => todo.name === $todoLabel.innerText), 1
+        todoList.findIndex((todo) => todo.name === $todoLabel.innerText),
+        1,
       );
+      $todoCount.innerText -= 1;
     }
   });
 
