@@ -21,15 +21,19 @@ const todosApp = () => {
 
   const handleInputTodo = (e) => {
     if (e.key !== 'Enter') return;
-    if ((errorMessage = getTodoNameErrorMessage(todoList, e.target.value))) {
+    conveyTodo(e.target.value);
+    e.target.value = '';
+    $all.click();
+  };
+
+  const conveyTodo = (todo) => {
+    if ((errorMessage = getTodoNameErrorMessage(todoList, todo))) {
       alert(errorMessage);
       return;
     }
 
-    addTodo(e.target.value);
-    renderTodoList(e.target.value, todoList.length);
-    e.target.value = '';
-    $all.click();
+    addTodo(todo);
+    renderTodoList(todo, todoList.length);
   };
 
   const addTodo = (todo) => {
