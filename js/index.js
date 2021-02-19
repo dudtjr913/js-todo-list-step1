@@ -24,6 +24,11 @@ const todosApp = () => {
       return;
     }
 
+    if (!e.target.value) {
+      alert('계획을 입력해주세요.');
+      return;
+    }
+
     todoList.push({ name: e.target.value, completed: false });
     $todoList.insertAdjacentHTML('beforeend', TEMPLATE(e.target.value));
     $todoCount.innerText = todoList.length;
