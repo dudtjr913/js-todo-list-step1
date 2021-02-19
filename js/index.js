@@ -1,5 +1,5 @@
 const TEMPLATE = (todo) =>
-` <li>
+  ` <li>
     <div>
       <input class="toggle" type="checkbox" />
       <label class="label">${todo}</label>
@@ -18,7 +18,7 @@ const todosApp = () => {
   const $active = document.querySelector('.active');
   const $completed = document.querySelector('.completed');
 
-  $inputTodo.addEventListener('keyup', (e) => {
+  const addTodoList = (e) => {
     if (e.key !== 'Enter') return;
     if (todoList.some((todo) => todo.name === e.target.value)) {
       alert('이미 존재하는 계획입니다.');
@@ -35,7 +35,9 @@ const todosApp = () => {
     $todoCount.innerText = todoList.length;
     e.target.value = '';
     $all.click();
-  });
+  };
+
+  $inputTodo.addEventListener('keyup', addTodoList);
 
   $todoList.addEventListener('click', (e) => {
     const $todoLi = e.target.parentNode.parentNode;
