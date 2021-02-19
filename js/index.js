@@ -2,10 +2,10 @@ import { $todoList, $todoCount, $active, $all, $completed } from './element.js';
 import {} from './inputTodo.js';
 
 export default function TodosApp() {
-  const todoList = [];
+  let todoList = [];
 
   this.addTodo = (todo) => {
-    todoList.push({ name: todo, completed: false });
+    todoList = [...todoList, { name: todo, completed: false }];
   };
 
   this.getTodoList = () => {
