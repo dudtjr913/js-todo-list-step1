@@ -30,11 +30,15 @@ const todosApp = () => {
       return;
     }
 
-    todoList.push({ name: e.target.value, completed: false });
+    addTodo(e.target.value);
     $todoList.insertAdjacentHTML('beforeend', TEMPLATE(e.target.value));
     $todoCount.innerText = todoList.length;
     e.target.value = '';
     $all.click();
+  };
+
+  const addTodo = (todo) => {
+    todoList.push({ name: todo, completed: false });
   };
 
   $inputTodo.addEventListener('keyup', handleInputTodo);
