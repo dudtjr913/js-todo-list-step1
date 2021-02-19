@@ -26,6 +26,5 @@ export const deleteTodoList = ($todoLi, todoName) => {
 };
 
 export const conveyAllTodo = () => {
-  render.showAllTodoList();
-  render.todoCountText(todosApp.getTodoList().length);
+  render.showAllTodoList(todosApp.getTodoList().length);
 };

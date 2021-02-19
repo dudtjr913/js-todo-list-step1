@@ -7,6 +7,10 @@ const removeFocusAllTodoCount = () => {
   $completed.classList.remove('selected');
 };
 
+const todoCountText = (count) => {
+  $todoCount.innerText = count;
+};
+
 export default {
   addTodoList(todo, count) {
     $todoList.insertAdjacentHTML('beforeend', todoListTemplate(todo));
@@ -22,15 +26,12 @@ export default {
     $elem.classList.toggle(className);
   },
 
-  showAllTodoList() {
+  showAllTodoList(count) {
     removeFocusAllTodoCount();
     $all.classList.add('selected');
     document
       .querySelectorAll('#todo-list li')
       .forEach(($todo) => ($todo.style.display = 'block'));
-  },
-
-  todoCountText(count) {
-    $todoCount.innerText = count;
+    todoCountText(count);
   },
 };
