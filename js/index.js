@@ -12,6 +12,9 @@ const todosApp = () => {
 
   const $inputTodo = document.querySelector('.new-todo');
   const $todoList = document.querySelector('#todo-list');
+  const $all = document.querySelector('.all');
+  const $active = document.querySelector('.active');
+  const $completed = document.querySelector('.completed');
 
   $inputTodo.addEventListener('keyup', (e) => {
     if (e.key !== 'Enter') return;
@@ -22,8 +25,18 @@ const todosApp = () => {
   });
 
   $todoList.addEventListener('change', (e) => {
-    const $todoLi = e.target.parentNode.parentNode
+    const $todoLi = e.target.parentNode.parentNode;
     $todoLi.classList.toggle('completed');
+  });
+
+  $active.addEventListener('click', (e) => {
+    $all.classList.remove('selected');
+    $completed.classList.remove('selected');
+    e.target.classList.add('selected');
+
+    document
+      .querySelectorAll('#todo-list li.completed')
+      .forEach(($completedTodo) => ($completedTodo.style.display = 'none'));
   });
 };
 todosApp();
