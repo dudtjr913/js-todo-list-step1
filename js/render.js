@@ -1,9 +1,9 @@
-import { TEMPLATE } from './template.js';
+import { todoListTemplate } from './template.js';
 import { $todoList, $todoCount } from './element.js';
 
 export default {
   addTodoList(todo, count) {
-    $todoList.insertAdjacentHTML('beforeend', TEMPLATE(todo));
+    $todoList.insertAdjacentHTML('beforeend', todoListTemplate(todo));
     $todoCount.innerText = count;
   },
 
