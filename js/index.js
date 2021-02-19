@@ -8,6 +8,10 @@ export default function TodosApp() {
     todoList.push({ name: todo, completed: false });
   };
 
+  this.getTodoList = () => {
+    return todoList;
+  };
+
   $todoList.addEventListener('click', (e) => {
     const $todoLi = e.target.parentNode.parentNode;
     const $todoLabel = $todoLi.querySelector('.label');

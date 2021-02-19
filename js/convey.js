@@ -1,5 +1,4 @@
-import TodosApp from "./index.js"
-
+import TodosApp from './index.js';
 
 const todosApp = new TodosApp();
 
