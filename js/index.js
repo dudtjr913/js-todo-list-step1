@@ -44,9 +44,23 @@ const todosApp = () => {
     $completed.classList.remove('selected');
     e.target.classList.add('selected');
 
-    document
-      .querySelectorAll('#todo-list li.completed')
-      .forEach(($completedTodo) => ($completedTodo.style.display = 'none'));
+    document.querySelectorAll('#todo-list li').forEach(($todo) => {
+      $todo.classList.contains('completed')
+        ? ($todo.style.display = 'none')
+        : ($todo.style.display = 'block');
+    });
+  });
+
+  $completed.addEventListener('click', (e) => {
+    $all.classList.remove('selected');
+    $active.classList.remove('selected');
+    e.target.classList.add('selected');
+
+    document.querySelectorAll('#todo-list li').forEach(($todo) => {
+      $todo.classList.contains('completed')
+        ? ($todo.style.display = 'block')
+        : ($todo.style.display = 'none');
+    });
   });
 };
 todosApp();
