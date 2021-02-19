@@ -1,5 +1,5 @@
 import { $todoCount, $active, $all, $completed } from './element.js';
-import {} from './inputTodo.js';
+import {} from './todoInput.js';
 import {} from './todoList.js';
 
 export default function TodosApp() {
