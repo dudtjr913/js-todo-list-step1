@@ -1,73 +1,12 @@
-import {
-  $todoList,
-  $inputTodo,
-  $todoCount,
-  $active,
-  $all,
-  $completed,
-} from './element.js';
+import { $todoList, $todoCount, $active, $all, $completed } from './element.js';
+import {} from './convey.js';
 
-const TEMPLATE = (todo) =>
-  ` <li>
-    <div>
-      <input class="toggle" type="checkbox" />
-      <label class="label">${todo}</label>
-      <button class="destroy"></button>
-    </div>
-  </li>
-`;
-
-const todosApp = () => {
+export default function TodosApp() {
   const todoList = [];
-  let errorMessage;
 
-  const handleInputTodo = (e) => {
-    if (e.key !== 'Enter') return;
-    conveyTodo(e.target.value);
-    e.target.value = '';
-    $all.click();
-  };
-
-  const conveyTodo = (todo) => {
-    if ((errorMessage = getTodoNameErrorMessage(todoList, todo))) {
-      alert(errorMessage);
-      return;
-    }
-
-    addTodo(todo);
-    renderTodoList(todo, todoList.length);
-  };
-
-  const addTodo = (todo) => {
+  this.addTodo = (todo) => {
     todoList.push({ name: todo, completed: false });
   };
-
-  const renderTodoList = (todo, count) => {
-    $todoList.insertAdjacentHTML('beforeend', TEMPLATE(todo));
-    $todoCount.innerText = count;
-  };
-
-  const getTodoNameErrorMessage = (todoList, name) => {
-    if (isAlreadyExistTodoName(todoList, name)) {
-      return '이미 존재하는 계획입니다.';
-    }
-
-    if (isBlankTodoName(name)) {
-      return '계획을 입력해주세요.';
-    }
-
-    return '';
-  };
-
-  const isAlreadyExistTodoName = (todoList, name) => {
-    return todoList.some((todo) => todo.name === name);
-  };
-
-  const isBlankTodoName = (name) => {
-    return !name;
-  };
-
-  $inputTodo.addEventListener('keyup', handleInputTodo);
 
   $todoList.addEventListener('click', (e) => {
     const $todoLi = e.target.parentNode.parentNode;
@@ -128,5 +67,4 @@ const todosApp = () => {
       ({ completed }) => !!completed,
     ).length;
   });
-};
-todosApp();
+}
