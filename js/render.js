@@ -22,12 +22,15 @@ export default {
     $elem.classList.toggle(className);
   },
 
-  showAllTodoList(count) {
+  showAllTodoList() {
     removeFocusAllTodoCount();
     $all.classList.add('selected');
     document
       .querySelectorAll('#todo-list li')
       .forEach(($todo) => ($todo.style.display = 'block'));
+  },
+
+  todoCountText(count) {
     $todoCount.innerText = count;
   },
 };
