@@ -12,36 +12,6 @@ export default function TodosApp() {
     return todoList;
   };
 
-  const toggleTodoList = ($todoLi, todoName) => {
-    $todoLi.classList.toggle('completed');
-    const todo = todoList.find((todo) => todo.name === todoName);
-    todo.completed = !todo.completed;
-  };
-
-  const deleteTodoList = ($todoLi, todoName) => {
-    $todoList.removeChild($todoLi);
-    todoList.splice(
-      todoList.findIndex((todo) => todo.name === todoName),
-      1,
-    );
-    $todoCount.innerText -= 1;
-  };
-
-  const handleTodoList = (e) => {
-    const $todoLi = e.target.parentNode.parentNode;
-    const $todoLabel = $todoLi.querySelector('.label');
-    if (e.target.classList.contains('toggle')) {
-      toggleTodoList($todoLi, $todoLabel.innerText);
-      return;
-    }
-    if (e.target.classList.contains('destroy')) {
-      deleteTodoList($todoLi, $todoLabel.innerText);
-      return;
-    }
-  };
-
-  $todoList.addEventListener('click', handleTodoList);
-
   $all.addEventListener('click', (e) => {
     $active.classList.remove('selected');
     $completed.classList.remove('selected');
