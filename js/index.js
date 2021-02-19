@@ -19,24 +19,30 @@ const todosApp = () => {
 
   $inputTodo.addEventListener('keyup', (e) => {
     if (e.key !== 'Enter') return;
-    if(todoList.some((todo) => todo.name === e.target.value)){
-        alert('이미 존재하는 계획입니다.')
-        return;
+    if (todoList.some((todo) => todo.name === e.target.value)) {
+      alert('이미 존재하는 계획입니다.');
+      return;
     }
 
     todoList.push({ name: e.target.value, completed: false });
     $todoList.insertAdjacentHTML('beforeend', TEMPLATE(e.target.value));
     $todoCount.innerText = todoList.length;
     e.target.value = '';
-    $all.click()
+    $all.click();
   });
 
-  $todoList.addEventListener('change', (e) => {
+  $todoList.addEventListener('click', (e) => {
     const $todoLi = e.target.parentNode.parentNode;
     const $todoLabel = $todoLi.querySelector('.label');
     $todoLi.classList.toggle('completed');
     const todo = todoList.find((todo) => todo.name === $todoLabel.innerText);
     todo.completed = !todo.completed;
+    if (e.target.classList.contains('destroy')) {
+      $todoList.removeChild($todoLi);
+      todoList.splice(
+        todoList.findIndex((todo) => todo.name === $todoLabel.innerText), 1
+      );
+    }
   });
 
   $all.addEventListener('click', (e) => {
