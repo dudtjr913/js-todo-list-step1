@@ -18,7 +18,7 @@ const todosApp = () => {
   const $active = document.querySelector('.active');
   const $completed = document.querySelector('.completed');
 
-  const addTodoList = (e) => {
+  const handleAddTodoList = (e) => {
     if (e.key !== 'Enter') return;
     if (todoList.some((todo) => todo.name === e.target.value)) {
       alert('이미 존재하는 계획입니다.');
@@ -37,7 +37,7 @@ const todosApp = () => {
     $all.click();
   };
 
-  $inputTodo.addEventListener('keyup', addTodoList);
+  $inputTodo.addEventListener('keyup', handleAddTodoList);
 
   $todoList.addEventListener('click', (e) => {
     const $todoLi = e.target.parentNode.parentNode;
