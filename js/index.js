@@ -12,12 +12,15 @@ export default function TodosApp() {
     return todoList;
   };
 
-  $todoList.addEventListener('click', (e) => {
+  const handleTodoList = (e) => {
     const $todoLi = e.target.parentNode.parentNode;
     const $todoLabel = $todoLi.querySelector('.label');
-    $todoLi.classList.toggle('completed');
-    const todo = todoList.find((todo) => todo.name === $todoLabel.innerText);
-    todo.completed = !todo.completed;
+    if (e.target.classList.contains('toggle')) {
+      $todoLi.classList.toggle('completed');
+      const todo = todoList.find((todo) => todo.name === $todoLabel.innerText);
+      todo.completed = !todo.completed;
+    }
+
     if (e.target.classList.contains('destroy')) {
       $todoList.removeChild($todoLi);
       todoList.splice(
@@ -26,7 +29,9 @@ export default function TodosApp() {
       );
       $todoCount.innerText -= 1;
     }
-  });
+  };
+
+  $todoList.addEventListener('click', handleTodoList);
 
   $all.addEventListener('click', (e) => {
     $active.classList.remove('selected');
