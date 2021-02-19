@@ -1,3 +1,12 @@
+import {
+  $todoList,
+  $inputTodo,
+  $todoCount,
+  $active,
+  $all,
+  $completed,
+} from './element.js';
+
 const TEMPLATE = (todo) =>
   ` <li>
     <div>
@@ -11,13 +20,6 @@ const TEMPLATE = (todo) =>
 const todosApp = () => {
   const todoList = [];
   let errorMessage;
-
-  const $inputTodo = document.querySelector('.new-todo');
-  const $todoList = document.querySelector('#todo-list');
-  const $todoCount = document.querySelector('.todo-count strong');
-  const $all = document.querySelector('.all');
-  const $active = document.querySelector('.active');
-  const $completed = document.querySelector('.completed');
 
   const handleInputTodo = (e) => {
     if (e.key !== 'Enter') return;
