@@ -1,5 +1,11 @@
 import { todoListTemplate } from './template.js';
-import { $todoList, $todoCount } from './element.js';
+import { $todoList, $todoCount, $all, $active, $completed } from './element.js';
+
+const removeFocusAllTodoCount = () => {
+  $all.classList.remove('selected');
+  $active.classList.remove('selected');
+  $completed.classList.remove('selected');
+};
 
 export default {
   addTodoList(todo, count) {
@@ -14,5 +20,14 @@ export default {
 
   toggleClassName($elem, className) {
     $elem.classList.toggle(className);
+  },
+
+  showAllTodoList(count) {
+    removeFocusAllTodoCount();
+    $all.classList.add('selected');
+    document
+      .querySelectorAll('#todo-list li')
+      .forEach(($todo) => ($todo.style.display = 'block'));
+    $todoCount.innerText = count;
   },
 };

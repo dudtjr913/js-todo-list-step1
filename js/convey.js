@@ -24,3 +24,7 @@ export const deleteTodoList = ($todoLi, todoName) => {
   todosApp.removeCurrentTodo(todoName);
   render.removeTodo($todoLi);
 };
+
+export const conveyAllTodo = () => {
+  render.showAllTodoList(todosApp.getTodoList().length);
+};
