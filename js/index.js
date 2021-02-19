@@ -25,7 +25,7 @@ const todosApp = () => {
       return;
     }
 
-    if (!e.target.value) {
+    if (isBlankTodoName(e.target.value)) {
       alert('계획을 입력해주세요.');
       return;
     }
@@ -47,6 +47,10 @@ const todosApp = () => {
 
   const isAlreadyExistTodoName = (todoList, name) => {
     return todoList.some((todo) => todo.name === name);
+  };
+
+  const isBlankTodoName = (name) => {
+    return !name;
   };
 
   $inputTodo.addEventListener('keyup', handleInputTodo);
