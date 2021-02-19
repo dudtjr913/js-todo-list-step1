@@ -19,11 +19,16 @@ const todosApp = () => {
 
   $inputTodo.addEventListener('keyup', (e) => {
     if (e.key !== 'Enter') return;
+    if(todoList.some((todo) => todo.name === e.target.value)){
+        alert('이미 존재하는 계획입니다.')
+        return;
+    }
 
     todoList.push({ name: e.target.value, completed: false });
     $todoList.insertAdjacentHTML('beforeend', TEMPLATE(e.target.value));
     $todoCount.innerText = todoList.length;
     e.target.value = '';
+    $all.click()
   });
 
   $todoList.addEventListener('change', (e) => {
