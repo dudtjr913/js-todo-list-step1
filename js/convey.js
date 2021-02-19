@@ -1,6 +1,6 @@
 import TodosApp from './index.js';
 import { getTodoNameErrorMessage } from './validators/getMessage.js';
-import { renderTodoList, toggleClassName } from './render.js';
+import { removeTodo, renderTodoList, toggleClassName } from './render.js';
 
 const todosApp = new TodosApp();
 
@@ -22,6 +22,5 @@ export const toggleTodoList = ($todoLi, todoName) => {
 
 export const deleteTodoList = ($todoLi, todoName) => {
   todosApp.removeCurrentTodo(todoName);
-  $todoList.removeChild($todoLi);
-  $todoCount.innerText -= 1;
+  removeTodo($todoLi);
 };

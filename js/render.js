@@ -6,6 +6,11 @@ export const renderTodoList = (todo, count) => {
   $todoCount.innerText = count;
 };
 
+export const removeTodo = ($todoLi) => {
+  $todoList.removeChild($todoLi);
+  $todoCount.innerText -= 1;
+};
+
 export const toggleClassName = ($elem, className) => {
   $elem.classList.toggle(className);
 };
