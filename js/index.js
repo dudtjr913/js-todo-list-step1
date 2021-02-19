@@ -22,7 +22,7 @@ export default function TodosApp() {
     todoList = todoList.filter((todo) => todo.name !== todoName);
   };
 
-  $all.addEventListener('click', (e) => {
+  const handleAllView = (e) => {
     $active.classList.remove('selected');
     $completed.classList.remove('selected');
     e.target.classList.add('selected');
@@ -32,7 +32,9 @@ export default function TodosApp() {
       .forEach(($todo) => ($todo.style.display = 'block'));
 
     $todoCount.innerText = todoList.length;
-  });
+  };
+
+  $all.addEventListener('click', handleAllView);
 
   $active.addEventListener('click', (e) => {
     $all.classList.remove('selected');
