@@ -1,6 +1,7 @@
 import { $todoCount, $active, $all, $completed } from './element.js';
 import {} from './todoInput.js';
 import {} from './todoList.js';
+import {} from './todoCount.js';
 
 export default function TodosApp() {
   let todoList = [];
@@ -21,20 +22,6 @@ export default function TodosApp() {
   this.removeCurrentTodo = (todoName) => {
     todoList = todoList.filter((todo) => todo.name !== todoName);
   };
-
-  const handleAllView = (e) => {
-    $active.classList.remove('selected');
-    $completed.classList.remove('selected');
-    e.target.classList.add('selected');
-
-    document
-      .querySelectorAll('#todo-list li')
-      .forEach(($todo) => ($todo.style.display = 'block'));
-
-    $todoCount.innerText = todoList.length;
-  };
-
-  $all.addEventListener('click', handleAllView);
 
   $active.addEventListener('click', (e) => {
     $all.classList.remove('selected');
