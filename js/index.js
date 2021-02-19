@@ -20,7 +20,7 @@ const todosApp = () => {
 
   const handleInputTodo = (e) => {
     if (e.key !== 'Enter') return;
-    if (todoList.some((todo) => todo.name === e.target.value)) {
+    if (isAlreadyExistTodoName(todoList, e.target.value)) {
       alert('이미 존재하는 계획입니다.');
       return;
     }
@@ -43,6 +43,10 @@ const todosApp = () => {
   const renderTodoList = (todo, count) => {
     $todoList.insertAdjacentHTML('beforeend', TEMPLATE(todo));
     $todoCount.innerText = count;
+  };
+
+  const isAlreadyExistTodoName = (todoList, name) => {
+    return todoList.some((todo) => todo.name === name);
   };
 
   $inputTodo.addEventListener('keyup', handleInputTodo);
