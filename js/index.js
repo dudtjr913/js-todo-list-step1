@@ -29,6 +29,16 @@ const todosApp = () => {
     $todoLi.classList.toggle('completed');
   });
 
+  $all.addEventListener('click', (e) => {
+    $active.classList.remove('selected');
+    $completed.classList.remove('selected');
+    e.target.classList.add('selected');
+
+    document
+      .querySelectorAll('#todo-list li')
+      .forEach(($todo) => ($todo.style.display = 'block'));
+  });
+
   $active.addEventListener('click', (e) => {
     $all.classList.remove('selected');
     $completed.classList.remove('selected');
