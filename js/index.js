@@ -1,5 +1,6 @@
-import { $todoList, $todoCount, $active, $all, $completed } from './element.js';
+import { $todoCount, $active, $all, $completed } from './element.js';
 import {} from './inputTodo.js';
+import {} from './todoList.js';
 
 export default function TodosApp() {
   let todoList = [];
@@ -10,6 +11,11 @@ export default function TodosApp() {
 
   this.getTodoList = () => {
     return todoList;
+  };
+
+  this.revertCurrentTodoCompleted = (todoName) => {
+    const currentTodo = todoList.find((todo) => todo.name === todoName);
+    currentTodo.completed = !currentTodo.completed;
   };
 
   $all.addEventListener('click', (e) => {

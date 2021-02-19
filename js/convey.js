@@ -17,8 +17,7 @@ export const conveyTodo = (todo) => {
 
 export const toggleTodoList = ($todoLi, todoName) => {
   $todoLi.classList.toggle('completed');
-  const todo = todoList.find((todo) => todo.name === todoName);
-  todo.completed = !todo.completed;
+  todosApp.revertCurrentTodoCompleted(todoName);
 };
 
 export const deleteTodoList = ($todoLi, todoName) => {
