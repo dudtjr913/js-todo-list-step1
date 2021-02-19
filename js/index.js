@@ -18,6 +18,10 @@ export default function TodosApp() {
     currentTodo.completed = !currentTodo.completed;
   };
 
+  this.removeCurrentTodo = (todoName) => {
+    todoList = todoList.filter((todo) => todo.name !== todoName);
+  };
+
   $all.addEventListener('click', (e) => {
     $active.classList.remove('selected');
     $completed.classList.remove('selected');

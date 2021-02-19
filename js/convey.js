@@ -21,10 +21,7 @@ export const toggleTodoList = ($todoLi, todoName) => {
 };
 
 export const deleteTodoList = ($todoLi, todoName) => {
+  todosApp.removeCurrentTodo(todoName);
   $todoList.removeChild($todoLi);
-  todoList.splice(
-    todoList.findIndex((todo) => todo.name === todoName),
-    1,
-  );
   $todoCount.innerText -= 1;
 };
