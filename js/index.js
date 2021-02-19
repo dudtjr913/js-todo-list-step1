@@ -11,16 +11,19 @@ const todosApp = () => {
   `;
 
   const $inputTodo = document.querySelector('.new-todo');
+  const $todoList = document.querySelector('#todo-list');
 
   $inputTodo.addEventListener('keyup', (e) => {
     if (e.key !== 'Enter') return;
 
-    const $todoList = document.querySelector('#todo-list');
-
     todoList.push(e.target.value);
     $todoList.insertAdjacentHTML('beforeend', TEMPLATE(e.target.value));
-    e.target.value = ''
+    e.target.value = '';
+  });
+
+  $todoList.addEventListener('change', (e) => {
+    const $todoLi = e.target.parentNode.parentNode
+    $todoLi.classList.toggle('completed');
   });
 };
-
 todosApp();
