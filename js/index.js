@@ -20,7 +20,7 @@ const todosApp = () => {
   $inputTodo.addEventListener('keyup', (e) => {
     if (e.key !== 'Enter') return;
 
-    todoList.push(e.target.value);
+    todoList.push({ name: e.target.value, completed: false });
     $todoList.insertAdjacentHTML('beforeend', TEMPLATE(e.target.value));
     $todoCount.innerText = todoList.length;
     e.target.value = '';
@@ -28,7 +28,10 @@ const todosApp = () => {
 
   $todoList.addEventListener('change', (e) => {
     const $todoLi = e.target.parentNode.parentNode;
+    const $todoLabel = $todoLi.querySelector('.label');
     $todoLi.classList.toggle('completed');
+    const todo = todoList.find((todo) => todo.name === $todoLabel.innerText);
+    todo.completed = !todo.completed;
   });
 
   $all.addEventListener('click', (e) => {
@@ -39,6 +42,8 @@ const todosApp = () => {
     document
       .querySelectorAll('#todo-list li')
       .forEach(($todo) => ($todo.style.display = 'block'));
+
+    $todoCount.innerText = todoList.length;
   });
 
   $active.addEventListener('click', (e) => {
@@ -51,6 +56,10 @@ const todosApp = () => {
         ? ($todo.style.display = 'none')
         : ($todo.style.display = 'block');
     });
+
+    $todoCount.innerText = todoList.filter(
+      ({ completed }) => !completed,
+    ).length;
   });
 
   $completed.addEventListener('click', (e) => {
@@ -63,6 +72,10 @@ const todosApp = () => {
         ? ($todo.style.display = 'block')
         : ($todo.style.display = 'none');
     });
+
+    $todoCount.innerText = todoList.filter(
+      ({ completed }) => !!completed,
+    ).length;
   });
 };
 todosApp();
