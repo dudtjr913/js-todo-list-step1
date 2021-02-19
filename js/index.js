@@ -31,14 +31,18 @@ const todosApp = () => {
     }
 
     addTodo(e.target.value);
-    $todoList.insertAdjacentHTML('beforeend', TEMPLATE(e.target.value));
-    $todoCount.innerText = todoList.length;
+    renderTodoList(e.target.value, todoList.length);
     e.target.value = '';
     $all.click();
   };
 
   const addTodo = (todo) => {
     todoList.push({ name: todo, completed: false });
+  };
+
+  const renderTodoList = (todo, count) => {
+    $todoList.insertAdjacentHTML('beforeend', TEMPLATE(todo));
+    $todoCount.innerText = count;
   };
 
   $inputTodo.addEventListener('keyup', handleInputTodo);
