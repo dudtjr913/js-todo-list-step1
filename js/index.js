@@ -12,6 +12,7 @@ const todosApp = () => {
 
   const $inputTodo = document.querySelector('.new-todo');
   const $todoList = document.querySelector('#todo-list');
+  const $todoCount = document.querySelector('.todo-count strong');
   const $all = document.querySelector('.all');
   const $active = document.querySelector('.active');
   const $completed = document.querySelector('.completed');
@@ -21,6 +22,7 @@ const todosApp = () => {
 
     todoList.push(e.target.value);
     $todoList.insertAdjacentHTML('beforeend', TEMPLATE(e.target.value));
+    $todoCount.innerText = todoList.length;
     e.target.value = '';
   });
 
