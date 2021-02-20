@@ -34,4 +34,15 @@ export default {
       .forEach(($todo) => ($todo.style.display = 'block'));
     todoCountText(count);
   },
+
+  showActiveTodoList(count) {
+    removeFocusAllTodoCount();
+    $active.classList.add('selected');
+    document.querySelectorAll('#todo-list li').forEach(($todo) => {
+      $todo.classList.contains('completed')
+        ? ($todo.style.display = 'none')
+        : ($todo.style.display = 'block');
+    });
+    todoCountText(count);
+  },
 };
