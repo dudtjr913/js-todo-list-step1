@@ -45,4 +45,15 @@ export default {
     });
     todoCountText(count);
   },
+
+  showCompletedTodoList(count) {
+    removeFocusAllTodoCount();
+    $completed.classList.add('selected');
+    document.querySelectorAll('#todo-list li').forEach(($todo) => {
+      $todo.classList.contains('completed')
+        ? ($todo.style.display = 'block')
+        : ($todo.style.display = 'none');
+    });
+    todoCountText(count);
+  },
 };
