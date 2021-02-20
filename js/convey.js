@@ -28,3 +28,17 @@ export const deleteTodoList = ($todoLi, todoName) => {
 export const conveyAllTodo = () => {
   render.showAllTodoList(todosApp.getTodoList().length);
 };
+
+export const conveyActiveTodo = () => {
+  $all.classList.remove('selected');
+  $completed.classList.remove('selected');
+  e.target.classList.add('selected');
+
+  document.querySelectorAll('#todo-list li').forEach(($todo) => {
+    $todo.classList.contains('completed')
+      ? ($todo.style.display = 'none')
+      : ($todo.style.display = 'block');
+  });
+
+  $todoCount.innerText = todoList.filter(({ completed }) => !completed).length;
+};
