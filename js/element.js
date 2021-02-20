@@ -1,6 +1,8 @@
-export const $inputTodo = document.querySelector('.new-todo');
-export const $todoList = document.querySelector('#todo-list');
-export const $todoCount = document.querySelector('.todo-count strong');
-export const $all = document.querySelector('.all');
-export const $active = document.querySelector('.active');
-export const $completed = document.querySelector('.completed');
+import { $ } from './utils/dom.js';
+
+export const $inputTodo = $('.new-todo');
+export const $todoList = $('#todo-list');
+export const $todoCount = $('.todo-count strong');
+export const $all = $('.all');
+export const $active = $('.active');
+export const $completed = $('.completed');

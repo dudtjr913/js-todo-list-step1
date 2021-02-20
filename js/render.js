@@ -1,5 +1,6 @@
 import { todoListTemplate } from './template.js';
 import { $todoList, $todoCount, $all, $active, $completed } from './element.js';
+import { $ } from './utils/dom.js';
 
 const removeFocusAllTodoCount = () => {
   $all.classList.remove('selected');
@@ -29,16 +30,14 @@ export default {
   showAllTodoList(count) {
     removeFocusAllTodoCount();
     $all.classList.add('selected');
-    document
-      .querySelectorAll('#todo-list li')
-      .forEach(($todo) => ($todo.style.display = 'block'));
+    $('#todo-list li').forEach(($todo) => ($todo.style.display = 'block'));
     todoCountText(count);
   },
 
   showActiveTodoList(count) {
     removeFocusAllTodoCount();
     $active.classList.add('selected');
-    document.querySelectorAll('#todo-list li').forEach(($todo) => {
+    $('#todo-list li').forEach(($todo) => {
       $todo.classList.contains('completed')
         ? ($todo.style.display = 'none')
         : ($todo.style.display = 'block');
@@ -49,7 +48,7 @@ export default {
   showCompletedTodoList(count) {
     removeFocusAllTodoCount();
     $completed.classList.add('selected');
-    document.querySelectorAll('#todo-list li').forEach(($todo) => {
+    $('#todo-list li').forEach(($todo) => {
       $todo.classList.contains('completed')
         ? ($todo.style.display = 'block')
         : ($todo.style.display = 'none');

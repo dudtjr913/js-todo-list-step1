@@ -1,4 +1,3 @@
-import { $todoCount, $active, $all, $completed } from './element.js';
 import {} from './todoInput.js';
 import {} from './todoList.js';
 import {} from './todoCount.js';
