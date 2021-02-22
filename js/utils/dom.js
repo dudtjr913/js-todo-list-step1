@@ -68,5 +68,17 @@ export const $ = (selector, target = document) => {
 
       return this;
     },
+
+    get value() {
+      return Array.isArray($element)
+        ? $element.map(($elem) => $elem.value)
+        : $element.value;
+    },
+
+    set value(text) {
+      Array.isArray($element)
+        ? $element.forEach(($elem) => ($elem.value = text))
+        : ($element.value = text);
+    },
   };
 };
